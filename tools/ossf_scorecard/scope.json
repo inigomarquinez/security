@@ -1,7 +1,11 @@
 {
   "github.com": {
     "inigomarquinez": {
-      "included": [],
+      "included": [
+        "inigomarquinez",
+        "pandahr",
+        "kata-ohce"
+      ],
       "excluded": []
     }
   }
