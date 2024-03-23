@@ -1,5 +1,8 @@
 {
   "github.com": {
-    "inigomarquinez": {}
+    "inigomarquinez": {
+      "included": [],
+      "excluded": []
+    }
   }
 }
