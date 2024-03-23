@@ -1,0 +1,53 @@
+name: OpenSSF Scorecard Monitor
+
+on: 
+  # TODO: replace by CRON trigger
+  workflow_dispatch:
+
+# Permissions required to run this workflow (create issue and commit/push changes)
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  packages: none
+
+jobs:
+  security-scoring:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔐 Harden Runner
+        uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+        with:
+          egress-policy: audit
+
+      - name: ⤵️ Git checkout
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+
+      - name: 🖥️ OpenSSF Scorecard Monitor
+        uses: UlisesGascon/openssf-scorecard-monitor@8551177324543b39670fe3c430012c946a937bd1 # v2.0.0-beta7
+        with:
+          scope: tools/ossf_scorecard/scope.json
+          database: tools/ossf_scorecard/database.json
+          report: tools/ossf_scorecard/report.md
+          auto-commit: false
+          auto-push: false
+          generate-issue: true
+          issue-title: "OpenSSF scorecard report updated!"
+          max-request-in-parallel: 10
+          discovery-enabled: true
+          discovery-orgs: 'inigomarquinez'
+          report-tags-enabled: true
+          # The token is needed to create issues, discovery mode and pushing changes in files
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔀 Create Pull Request
+        uses: gr2m/create-or-update-pull-request-action@2fa38a89a3163b6ee8a76c110d3af2d7325ea9aa # v1.9.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            commit-message: 'docs: update openssf scorecard report'
+            title: 'docs: update openssf scorecard report'
+            body: 'OpenSSF scorecard report updated.'
+            assignees: ${{ github.actor }}
+            branch: update-openssf-scorecard-report
+            update-pull-request-title-and-body: true
