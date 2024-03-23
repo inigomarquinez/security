@@ -1,0 +1,30 @@
+{
+  "github.com": {
+    "inigomarquinez": {
+      "inigomarquinez": {
+        "previous": [],
+        "current": {
+          "score": 5,
+          "date": "2024-01-29",
+          "commit": "2b307b580c88aeeae752e2c3c28641a3b3eebbec"
+        }
+      },
+      "pandahr": {
+        "previous": [],
+        "current": {
+          "score": 5.4,
+          "date": "2024-03-18T00:55:24Z",
+          "commit": "0491c2ddd835f11f3379ba2502c00414696bdcd3"
+        }
+      },
+      "kata-ohce": {
+        "previous": [],
+        "current": {
+          "score": 1.3,
+          "date": "2024-03-18",
+          "commit": "8d3842ee21d4c54a82fb5bb179194c1ed13d09b8"
+        }
+      }
+    }
+  }
+}
