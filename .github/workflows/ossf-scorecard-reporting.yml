@@ -22,6 +22,8 @@ jobs:
 
       - name: ⤵️ Git checkout
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+        with:
+          persist-credentials: false
 
       - name: 🖥️ OpenSSF Scorecard Monitor
         uses: UlisesGascon/openssf-scorecard-monitor@8551177324543b39670fe3c430012c946a937bd1 # v2.0.0-beta7
